@@ -1,0 +1,23 @@
+{
+  "scripts": {
+    "start": "npm run clean && platformatic db start",
+    "clean": "rm -fr ./dist",
+    "build": "npx tsc"
+  },
+  "devDependencies": {
+    "fastify": "4.17.0"
+  },
+  "dependencies": {
+    "@fastify/type-provider-typebox": "^3.2.0",
+    "@platformatic/sql-graphql": "0.25.0",
+    "@platformatic/sql-mapper": "0.25.0",
+    "@sinclair/typebox": "^0.28.13",
+    "@types/node": "^20.2.5",
+    "bullmq": "^3.14.1",
+    "platformatic": "^0.25.0"
+  },
+  "engines": {
+    "node": "^18.8.0 || >=19"
+  },
+  "packageManager": "yarn@3.5.1"
+}

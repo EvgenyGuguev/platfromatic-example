@@ -1,0 +1,67 @@
+{
+  "$schema": "https://platformatic.dev/schemas/v0.25.0/db",
+  "server": {
+    "hostname": "{PLT_SERVER_HOSTNAME}",
+    "port": "{PORT}",
+    "logger": {
+      "level": "{PLT_SERVER_LOGGER_LEVEL}"
+    }
+  },
+  "db": {
+    "connectionString": "{DATABASE_URL}",
+    "graphql": true,
+    "openapi": {
+      "security": [{ "bearerAuth": [] }],
+      "components": {
+        "securitySchemes": {
+          "bearerAuth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT"
+          }
+        }
+      }
+    }
+  },
+  "migrations": {
+    "dir": "migrations"
+  },
+  "dashboard": true,
+  "plugins": {
+    "paths": [
+      "./modules"
+    ],
+    "typescript": true
+  },
+  "types": {
+    "autogenerate": true
+  },
+  "authorization": {
+    "adminSecret": "admin",
+    "roleKey": "X-PLATFORMATIC-ROLE",
+    "anonymousRole": "anonymous",
+    "jwt": {
+      "secret": "platformatic"
+    },
+    "rules": [
+      {
+        "role": "user",
+        "entities": ["movie", "user"],
+        "save": {
+          "checks": {
+            "userId": "X-PLATFORMATIC-USER-ID"
+          }
+        },
+        "find": true,
+        "delete": true
+      },
+      {
+        "role": "anonymous",
+        "entities": ["movie", "user"],
+        "save": false,
+        "find": true,
+        "delete": false
+      }
+    ]
+  }
+}
