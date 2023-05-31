@@ -11,7 +11,11 @@
     "connectionString": "{DATABASE_URL}",
     "graphql": true,
     "openapi": {
-      "security": [{ "bearerAuth": [] }],
+      "security": [
+        {
+          "bearerAuth": []
+        }
+      ],
       "components": {
         "securitySchemes": {
           "bearerAuth": {
@@ -26,7 +30,6 @@
   "migrations": {
     "dir": "migrations"
   },
-  "dashboard": true,
   "plugins": {
     "paths": [
       "./modules"
@@ -46,18 +49,20 @@
     "rules": [
       {
         "role": "user",
-        "entities": ["movie", "user"],
-        "save": {
-          "checks": {
-            "userId": "X-PLATFORMATIC-USER-ID"
-          }
-        },
+        "entities": [
+          "movie",
+          "user"
+        ],
+        "save": true,
         "find": true,
         "delete": true
       },
       {
         "role": "anonymous",
-        "entities": ["movie", "user"],
+        "entities": [
+          "movie",
+          "user"
+        ],
         "save": false,
         "find": true,
         "delete": false

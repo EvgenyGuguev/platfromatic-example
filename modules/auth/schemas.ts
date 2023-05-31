@@ -20,10 +20,6 @@ export const registerUserSchema = {
 
     }),
     response: {
-        201: Type.Object({
-            id: Type.Number(),
-            email: Type.String(),
-            password: Type.String(),
-        })
+        201: Type.Ref( Type.String({ $id: 'User' }))
     }
 };

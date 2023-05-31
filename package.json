@@ -11,9 +11,9 @@
     "@fastify/type-provider-typebox": "^3.2.0",
     "@platformatic/sql-graphql": "0.25.0",
     "@platformatic/sql-mapper": "0.25.0",
-    "@sinclair/typebox": "^0.28.13",
+    "@sinclair/typebox": "^0.28.14",
     "@types/node": "^20.2.5",
-    "bullmq": "^3.14.1",
+    "bullmq": "^3.14.2",
     "platformatic": "^0.25.0"
   },
   "engines": {

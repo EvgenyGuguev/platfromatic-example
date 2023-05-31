@@ -3,7 +3,7 @@ import { FastifyInstance } from 'fastify'
 import {EntityHooks} from '@platformatic/sql-mapper';
 
 export default async function (app: FastifyInstance) {
-    console.log("Loaded TWO module");
+    app.log.info("TWO module loaded");
 
     app.platformatic.addEntityHooks("movie", ({
     async save(original, { input, ...rest }){

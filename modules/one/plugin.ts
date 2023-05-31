@@ -3,7 +3,7 @@ import { Type } from '@sinclair/typebox';
 import { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox'
 
 const plugin: FastifyPluginAsyncTypebox = async function(fastify, _opts) {
-  console.log("Loaded ONE module");
+  fastify.log.info("ONE module loaded");
 
   const getSchema =  {
     querystring: Type.Object({
