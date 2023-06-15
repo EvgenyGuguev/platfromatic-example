@@ -1,6 +1,7 @@
 import { Type } from '@sinclair/typebox';
 
 export const loginUserSchema = {
+    tags: ['auth'],
     body: Type.Object({
         email: Type.String(),
         password: Type.String(),
@@ -14,6 +15,7 @@ export const loginUserSchema = {
 };
 
 export const registerUserSchema = {
+    tags: ['auth'],
     body: Type.Object({
         email: Type.String(),
         password: Type.String(),
@@ -21,5 +23,12 @@ export const registerUserSchema = {
     }),
     response: {
         201: Type.Ref( Type.String({ $id: 'User' }))
+    }
+};
+
+export const userInfoSchema = {
+    tags: ['auth'],
+    response: {
+        200: Type.Ref( Type.String({ $id: 'User' }))
     }
 };

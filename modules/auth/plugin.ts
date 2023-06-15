@@ -1,6 +1,6 @@
 import { FastifyPluginAsyncTypebox } from '@fastify/type-provider-typebox'
 import jwt from '@fastify/jwt';
-import {loginUserSchema, registerUserSchema} from "./schemas";
+import {loginUserSchema, registerUserSchema, userInfoSchema} from "./schemas";
 import {User} from "../../types";
 
 
@@ -36,8 +36,12 @@ const plugin: FastifyPluginAsyncTypebox = async function(app, _opts) {
         reply.send({token})
     })
 
-    app.get("/auth/info", (req, reply) => {
-        return req.user;
+    app.get("/auth/info", { schema: userInfoSchema },  async (req, reply) => {
+        const user = await db.query(sql`
+            select * from users where id = ${req.user['X-PLATFORMATIC-USER-ID']}
+        `);
+
+        reply.send(user[0]);
     })
 }
 

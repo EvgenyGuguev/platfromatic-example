@@ -6,6 +6,7 @@ const plugin: FastifyPluginAsyncTypebox = async function(fastify, _opts) {
   fastify.log.info("ONE module loaded");
 
   const getSchema =  {
+    tags: ['one'],
     querystring: Type.Object({
       name: Type.String({ default: 'world' })
     }),
@@ -22,6 +23,7 @@ const plugin: FastifyPluginAsyncTypebox = async function(fastify, _opts) {
   });
 
   const postSchema = {
+    tags: ['one'],
     body: Type.Object({
       name: Type.String()
     }),
